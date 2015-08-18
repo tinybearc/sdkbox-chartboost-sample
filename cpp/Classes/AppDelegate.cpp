@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "PluginChartboost/PluginChartboost.h"
 
 USING_NS_CC;
 

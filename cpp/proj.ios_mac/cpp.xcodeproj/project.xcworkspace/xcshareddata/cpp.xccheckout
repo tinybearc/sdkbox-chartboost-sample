@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>03A2C733-FD49-481A-A21B-61EFFAE2284F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>cpp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8BB0E3C8E42B37D5D600A45AF01D77F4A7E6BAEF</key>
+		<string>https://github.com/darkdukey/sdkbox-chartboost-sample.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>cpp/proj.ios_mac/cpp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8BB0E3C8E42B37D5D600A45AF01D77F4A7E6BAEF</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/darkdukey/sdkbox-chartboost-sample.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8BB0E3C8E42B37D5D600A45AF01D77F4A7E6BAEF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8BB0E3C8E42B37D5D600A45AF01D77F4A7E6BAEF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sdkbox-chartboost-sample</string>
+		</dict>
+	</array>
+</dict>
+</plist>

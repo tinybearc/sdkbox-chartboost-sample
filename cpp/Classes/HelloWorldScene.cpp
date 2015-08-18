@@ -1,6 +1,14 @@
 #include "HelloWorldScene.h"
+#include "cocostudio/CocoStudio.h"
 
 USING_NS_CC;
+
+template < typename T > std::string to_string( const T& n )
+{
+    std::ostringstream stm ;
+    stm << n ;
+    return stm.str() ;
+}
 
 Scene* HelloWorld::createScene()
 {
@@ -27,54 +35,45 @@ bool HelloWorld::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    FileUtils::getInstance()->addSearchPath("res");
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
+    sdkbox::PluginChartboost::init();
+    sdkbox::PluginChartboost::cache(sdkbox::CB_Location_Default);
+    sdkbox::PluginChartboost::cache(sdkbox::CB_Location_LevelComplete);
+    sdkbox::PluginChartboost::setListener(this);
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+    auto rootNode = CSLoader::createNode("MainScene.csb");
+    addChild(rootNode);
     
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    _btnVideo = rootNode->getChildByName<ui::Button*>("btnVideo");
+    _btnVideo->addClickEventListener(CC_CALLBACK_1(HelloWorld::onPlayVideo, this));
+    _btnVideo->setEnabled(false);
+    
+    _btnReward = rootNode->getChildByName<ui::Button*>("btnReward");
+    _btnReward->addClickEventListener(CC_CALLBACK_1(HelloWorld::onPlayReward, this));
+    _btnReward->setEnabled(false);
+    
+    _txtCoin = rootNode->getChildByName<ui::Text*>("txtCoins");
+    
+    auto btnClose = rootNode->getChildByName<ui::Button*>("btnClose");
+    btnClose->addClickEventListener(CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
     
     return true;
 }
 
+/**
+ * Button callback
+ */
+
+void HelloWorld::onPlayVideo(Ref *pSender)
+{
+    sdkbox::PluginChartboost::show(sdkbox::CB_Location_Default);
+}
+
+void HelloWorld::onPlayReward(Ref* sender)
+{
+    sdkbox::PluginChartboost::show(sdkbox::CB_Location_LevelComplete);
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
@@ -84,3 +83,72 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+
+/**
+ * Chartboost callbacks
+ */
+void HelloWorld::onChartboostCached(const std::string& name)
+{
+    _btnReward->setEnabled(true);
+    _btnVideo->setEnabled(true);
+}
+
+bool HelloWorld::onChartboostShouldDisplay(const std::string& name)
+{
+    CCLOG("Should display: %s", name.c_str());
+    return true;
+}
+
+void HelloWorld::onChartboostDisplay(const std::string& name)
+{
+    CCLOG("on display: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostDismiss(const std::string& name)
+{
+    CCLOG("on dismiss: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostClose(const std::string& name)
+{
+    CCLOG("on close: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostClick(const std::string& name)
+{
+    CCLOG("on click: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostReward(const std::string& name, int reward)
+{
+    CCLOG("on reward: %s", name.c_str());
+    
+    _coin += reward;
+    _txtCoin->setString(to_string(_coin));
+}
+
+void HelloWorld::onChartboostFailedToLoad(const std::string& name, sdkbox::CB_LoadError e)
+{
+    CCLOG("on failed to load: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostFailToRecordClick(const std::string& name, sdkbox::CB_ClickError e)
+{
+    CCLOG("on failed to record click: %s", name.c_str());
+}
+
+void HelloWorld::onChartboostConfirmation()
+{
+    CCLOG("on confirmation");
+}
+
+void HelloWorld::onChartboostCompleteStore()
+{
+    CCLOG("on complete store");
+}
+
+
+
+
+
+

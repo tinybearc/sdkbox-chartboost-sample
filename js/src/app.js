@@ -2,68 +2,61 @@
 var HelloWorldLayer = cc.Layer.extend({
     sprite:null,
     ctor:function () {
-        //////////////////////////////
-        // 1. super init first
-        this._super();
 
-        /////////////////////////////
-        // 2. add a menu item with "X" image, which is clicked to quit the program
-        //    you may modify it.
-        // ask the window size
+        this._super();
+        this._coin = 0;
+        var self = this;
+
         var size = cc.winSize;
 
-        // add a "close" icon to exit the progress. it's an autorelease object
-        var closeItem = new cc.MenuItemImage(
-            res.CloseNormal_png,
-            res.CloseSelected_png,
-            function () {
-                cc.log("Menu is clicked!");
-            }, this);
-        closeItem.attr({
-            x: size.width - 20,
-            y: 20,
-            anchorX: 0.5,
-            anchorY: 0.5
+        var ui = ccs.load(res.MainScene_json);
+        this.addChild(ui.node);
+
+        this.btnVideo = ui.node.getChildByName("btnVideo");
+        this.btnVideo.setEnabled(false);
+        this.btnVideo.addClickEventListener(function(){
+            sdkbox.PluginChartboost.show("Default");
         });
 
-        var menu = new cc.Menu(closeItem);
-        menu.x = 0;
-        menu.y = 0;
-        this.addChild(menu, 1);
-
-        /////////////////////////////
-        // 3. add your codes below...
-        // add a label shows "Hello World"
-        // create and initialize a label
-        var helloLabel = new cc.LabelTTF("Hello World", "Arial", 38);
-        // position the label on the center of the screen
-        helloLabel.x = size.width / 2;
-        helloLabel.y = 0;
-        // add the label as a child to this layer
-        this.addChild(helloLabel, 5);
-
-        // add "HelloWorld" splash screen"
-        this.sprite = new cc.Sprite(res.HelloWorld_png);
-        this.sprite.attr({
-            x: size.width / 2,
-            y: size.height / 2,
-            scale: 0.5,
-            rotation: 180
+        this.btnReward = ui.node.getChildByName("btnReward");
+        this.btnReward.setEnabled(false);
+        this.btnReward.addClickEventListener(function(){
+            sdkbox.PluginChartboost.show("Level Complete");
         });
-        this.addChild(this.sprite, 0);
 
-        this.sprite.runAction(
-            cc.sequence(
-                cc.rotateTo(2, 0),
-                cc.scaleTo(2, 1, 1)
-            )
-        );
-        helloLabel.runAction(
-            cc.spawn(
-                cc.moveBy(2.5, cc.p(0, size.height - 40)),
-                cc.tintTo(2.5,255,125,0)
-            )
-        );
+        this._txtCoins = ui.node.getChildByName("txtCoins");
+
+        sdkbox.PluginChartboost.init();
+        sdkbox.PluginChartboost.cache("Default");
+        sdkbox.PluginChartboost.cache("Level Complete");
+        sdkbox.PluginChartboost.setListener({
+            onChartboostCached : function (name) 
+            {
+                cc.log("onChartboostCached " + name) 
+                self.btnVideo.setEnabled(true);
+                self.btnReward.setEnabled(true);
+            },
+            onChartboostShouldDisplay : function (name) 
+            {
+                cc.log("onChartboostShouldDisplay " + name); 
+                return true; 
+            },
+            onChartboostDisplay : function (name) { cc.log("onChartboostDisplay " + name) },
+            onChartboostDismiss : function (name) { cc.log("onChartboostDismiss " + name) },
+            onChartboostClose : function (name) { cc.log("onChartboostClose " + name) },
+            onChartboostClick : function (name) { cc.log("onChartboostClick " + name) },
+            onChartboostReward : function (name, reward) 
+            {
+                cc.log("onChartboostReward " + name + " reward " + reward);
+                self._coin ++;
+                self._txtCoins.setString(self._coin);
+            },
+            onChartboostFailedToLoad : function (name, e) { cc.log("onChartboostFailedToLoad " + name + " load error " + e) },
+            onChartboostFailToRecordClick : function (name, e) { cc.log("onChartboostFailToRecordClick " + name + " click error " + e) },
+            onChartboostConfirmation : function () { cc.log("onChartboostConfirmation") },
+            onChartboostCompleteStore : function () { cc.log("onChartboostCompleteStore") },
+        });
+
         return true;
     }
 });

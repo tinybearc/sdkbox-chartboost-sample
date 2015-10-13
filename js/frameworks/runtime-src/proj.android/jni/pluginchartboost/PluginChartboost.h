@@ -257,10 +257,6 @@ public:
      * servers.
      */
     static void setShouldPrefetchVideoContent(bool shouldPrefetch);
-
-    #ifdef OBFUSCATED
-    _8a7ca32cfe3a4f1e8da46a1be00e1903
-    #endif
 };
 
 }

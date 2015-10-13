@@ -62,7 +62,7 @@ private:
         if (!s_cx) {
             return;
         }
-        
+
         cocos2d::Director::getInstance()->getScheduler()->performFunctionInCocosThread([=](){
         JSContext* cx = s_cx;
         const char* func_name = fName;
@@ -160,14 +160,14 @@ JSBool js_PluginChartboostJS_PluginChartboost_setListener(JSContext *cx, unsigne
 
 #if defined(MOZJS_MAJOR_VERSION)
 #if MOZJS_MAJOR_VERSION >= 33
-void register_PluginChartboostJs_helper(JSContext* cx, JS::HandleObject global) {
+void register_all_PluginChartboostJS_helper(JSContext* cx, JS::HandleObject global) {
     JS::RootedObject pluginObj(cx);
     sdkbox::getJsObjOrCreat(cx, global, "sdkbox.PluginChartboost", &pluginObj);
 
     JS_DefineFunction(cx, pluginObj, "setListener", js_PluginChartboostJS_PluginChartboost_setListener, 1, JSPROP_READONLY | JSPROP_PERMANENT);
 }
 #else
-void register_PluginChartboostJs_helper(JSContext* cx, JSObject* global) {
+void register_all_PluginChartboostJS_helper(JSContext* cx, JSObject* global) {
     JS::RootedObject pluginObj(cx);
     sdkbox::getJsObjOrCreat(cx, JS::RootedObject(cx, global), "sdkbox.PluginChartboost", &pluginObj);
 
@@ -175,7 +175,7 @@ void register_PluginChartboostJs_helper(JSContext* cx, JSObject* global) {
 }
 #endif
 #elif defined(JS_VERSION)
-void register_PluginChartboostJs_helper(JSContext* cx, JSObject* global) {
+void register_all_PluginChartboostJS_helper(JSContext* cx, JSObject* global) {
     jsval pluginVal;
     JSObject* pluginObj;
     pluginVal = sdkbox::getJsObjOrCreat(cx, global, "sdkbox.PluginChartboost", &pluginObj);

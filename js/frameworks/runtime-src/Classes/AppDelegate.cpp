@@ -123,7 +123,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     sc->addRegisterCallback(register_all_cocos2dx_3d_extension);
     
     sc->addRegisterCallback(register_all_PluginChartboostJS);
-    sc->addRegisterCallback(register_PluginChartboostJs_helper);
+    sc->addRegisterCallback(register_all_PluginChartboostJS_helper);
     
 #if CC_USE_3D_PHYSICS && CC_ENABLE_BULLET_INTEGRATION
     // Physics 3d can be commented out to reduce the package
@@ -148,6 +148,9 @@ bool AppDelegate::applicationDidFinishLaunching()
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     sc->addRegisterCallback(JavaScriptObjCBridge::_js_register);
 #endif
+
+    sc->addRegisterCallback(register_all_PluginChartboostJS);
+    sc->addRegisterCallback(register_all_PluginChartboostJS_helper);
     sc->start();    
     sc->runScript("script/jsb_boot.js");
 #if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)

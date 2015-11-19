@@ -1,6 +1,6 @@
 {
   "ID": "a2ee0952-26b5-49ae-8bf9-4f1d6279b798",
-  "Version": "2.3.1.2",
+  "Version": "2.3.2.3",
   "Name": "MainScene",
   "Content": {
     "Content": {
@@ -55,8 +55,8 @@
             "Tag": 5,
             "ActionTag": -365362835,
             "Size": {
-              "X": 1334.0,
-              "Y": 750.0
+              "X": 960.0,
+              "Y": 640.0
             },
             "Name": "background",
             "ctype": "PanelObjectData"
@@ -102,8 +102,8 @@
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 667.0,
-              "Y": 345.0
+              "X": 480.0,
+              "Y": 294.4
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -111,8 +111,6 @@
             },
             "CColor": {},
             "IconVisible": false,
-            "PositionPercentXEnabled": true,
-            "PositionPercentYEnabled": true,
             "PrePosition": {
               "X": 0.5,
               "Y": 0.46
@@ -121,6 +119,8 @@
               "X": 0.1529,
               "Y": 0.1067
             },
+            "HorizontalEdge": "BothEdge",
+            "VerticalEdge": "BothEdge",
             "LeftMargin": 565.0,
             "RightMargin": 565.0,
             "TopMargin": 365.0,
@@ -175,8 +175,8 @@
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 667.0,
-              "Y": 450.0
+              "X": 480.0,
+              "Y": 384.0
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -184,8 +184,6 @@
             },
             "CColor": {},
             "IconVisible": false,
-            "PositionPercentXEnabled": true,
-            "PositionPercentYEnabled": true,
             "PrePosition": {
               "X": 0.5,
               "Y": 0.6
@@ -194,6 +192,8 @@
               "X": 0.1529,
               "Y": 0.1067
             },
+            "HorizontalEdge": "BothEdge",
+            "VerticalEdge": "BothEdge",
             "LeftMargin": 565.0,
             "RightMargin": 565.0,
             "TopMargin": 260.0,
@@ -246,8 +246,8 @@
               "ScaleY": 0.5
             },
             "Position": {
-              "X": 1253.0,
-              "Y": 696.0
+              "X": 879.0,
+              "Y": 586.0
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -298,7 +298,7 @@
             },
             "Position": {
               "X": 560.0,
-              "Y": 615.0
+              "Y": 505.0
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -350,7 +350,7 @@
             },
             "Position": {
               "X": 758.0,
-              "Y": 614.0
+              "Y": 504.0
             },
             "Scale": {
               "ScaleX": 1.0,
@@ -383,8 +383,8 @@
           }
         ],
         "Size": {
-          "X": 1334.0,
-          "Y": 750.0
+          "X": 960.0,
+          "Y": 640.0
         },
         "Name": "Scene",
         "ctype": "SingleNodeObjectData"

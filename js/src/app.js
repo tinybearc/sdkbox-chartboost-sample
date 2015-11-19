@@ -9,22 +9,48 @@ var HelloWorldLayer = cc.Layer.extend({
 
         var size = cc.winSize;
 
-        var ui = ccs.load(res.MainScene_json);
-        this.addChild(ui.node);
+        // var ui = ccs.load(res.MainScene_json);
+        // this.addChild(ui.node);
 
-        this.btnVideo = ui.node.getChildByName("btnVideo");
+        // this.btnVideo = ui.node.getChildByName("btnVideo");
+        // this.btnVideo.setEnabled(false);
+        // this.btnVideo.addClickEventListener(function(){
+        //     sdkbox.PluginChartboost.show("Default");
+        // });
+
+        // this.btnReward = ui.node.getChildByName("btnReward");
+        // this.btnReward.setEnabled(false);
+        // this.btnReward.addClickEventListener(function(){
+        //     sdkbox.PluginChartboost.show("Level Complete");
+        // });
+
+        // this._txtCoins = ui.node.getChildByName("txtCoins");
+
+        this.btnVideo = new cc.MenuItemFont("btnVideo", function () {
+          sdkbox.PluginChartboost.show("Default");
+        }, this);
         this.btnVideo.setEnabled(false);
-        this.btnVideo.addClickEventListener(function(){
-            sdkbox.PluginChartboost.show("Default");
-        });
 
-        this.btnReward = ui.node.getChildByName("btnReward");
+        this.btnReward = new cc.MenuItemFont("btnReward", function () {
+          sdkbox.PluginChartboost.show("Level Complete");
+        }, this);
         this.btnReward.setEnabled(false);
-        this.btnReward.addClickEventListener(function(){
-            sdkbox.PluginChartboost.show("Level Complete");
-        });
 
-        this._txtCoins = ui.node.getChildByName("txtCoins");
+        var menu = new cc.Menu(this.btnVideo, this.btnReward);
+        menu.x = size.width/2;
+        menu.y = size.height/2;
+        menu.alignItemsVerticallyWithPadding(5);
+        this.addChild(menu);
+
+        var txt = new cc.LabelTTF("Coins:", "Arial", 38);
+        txt.x = size.width - 200;
+        txt.y = size.height - 100;
+        this.addChild(txt, 5);
+
+        this._txtCoins = new cc.LabelTTF("0", "Arial", 38);
+        this._txtCoins.x = txt.getPositionX() + 70;
+        this._txtCoins.y = txt.getPositionY();
+        this.addChild(this._txtCoins, 5);
 
         sdkbox.PluginChartboost.init();
         sdkbox.PluginChartboost.cache("Default");

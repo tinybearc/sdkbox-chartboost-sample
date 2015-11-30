@@ -11,6 +11,7 @@
 		15A8A4881834C90F00142BE0 /* libcurl.dylib */ = {isa = PBXBuildFile; fileRef = 15A8A4871834C90E00142BE0 /* libcurl.dylib */; };
 		192977161BB236650002DFFC /* CFNetwork.framework */ = {isa = PBXBuildFile; fileRef = 192977151BB236650002DFFC /* CFNetwork.framework */; };
 		1AF4C403178663F200122817 /* libz.dylib */ = {isa = PBXBuildFile; fileRef = 1AF4C402178663F200122817 /* libz.dylib */; };
+		27B84D02B5F1FDF4B4AEB691 /* SystemConfiguration.framework */ = {isa = PBXBuildFile; fileRef = 18CC4DA295AE5A0337988EAA /* SystemConfiguration.framework */; };
 		31F04DC6918492864289DDBD /* libsimulator Mac.a */ = {isa = PBXBuildFile; fileRef = 5599473FAB09367DC44B3C2C /* libsimulator Mac.a */; };
 		3EEEDB61197107C0006A9FF8 /* MediaPlayer.framework */ = {isa = PBXBuildFile; fileRef = 3EEEDB60197107C0006A9FF8 /* MediaPlayer.framework */; };
 		40B74D56B34FBE0383623C35 /* PluginChartboost.framework */ = {isa = PBXBuildFile; fileRef = 3E874DE9981959E1312C5092 /* PluginChartboost.framework */; };
@@ -91,6 +92,7 @@
 		15427CE2198F237300DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
 		15A8A4871834C90E00142BE0 /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		15C1568D1683131500D239F2 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2d-x/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
+		18CC4DA295AE5A0337988EAA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		192977151BB236650002DFFC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		1AF4C402178663F200122817 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3E874DE9981959E1312C5092 /* PluginChartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginChartboost.framework; path = PluginChartboost.framework; sourceTree = SOURCE_ROOT; };
@@ -226,6 +228,7 @@
 				F0414B978EAA569ED4FFE5C2 /* Chartboost.framework */,
 				5B03486A8BBA60AF3CE4AB87 /* StoreKit.framework */,
 				ECD74EB69AE32B7760616CBE /* AdSupport.framework */,
+				27B84D02B5F1FDF4B4AEB691 /* SystemConfiguration.framework */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +379,7 @@
 				C06A45E59CCCDB8A164F45A6 /* Chartboost.framework */,
 				5EA14F83BCF4CAC2E6968D99 /* StoreKit.framework */,
 				EDBE4339823432CC1B9A0AAA /* AdSupport.framework */,
+				18CC4DA295AE5A0337988EAA /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -460,7 +464,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F293B3C215EB7BE500256477 /* Build configuration list for PBXProject "Unity-iPhone" */;
+			buildConfigurationList = F293B3C215EB7BE500256477 /* Build configuration list for PBXNativeTarget "TARGET_NAME" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -724,6 +728,9 @@
 					"\"PluginChartboost.framework\"",
 					"\"Chartboost.framework\"",
 				);
+				OTHER_CFLAGS = (
+					-DSDKBOX_ENABLED,
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -763,6 +770,9 @@
 					"\"PluginChartboost.framework\"",
 					"\"Chartboost.framework\"",
 				);
+				OTHER_CFLAGS = (
+					-DSDKBOX_ENABLED,
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -786,7 +796,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F293B3C215EB7BE500256477 /* Build configuration list for PBXProject "Unity-iPhone" */ = {
+		F293B3C215EB7BE500256477 /* Build configuration list for PBXNativeTarget "TARGET_NAME" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F293B6C215EB7BEA00256477 /* Debug */,

@@ -48,6 +48,7 @@
 		509D4AE917EBB82000697056 /* AppKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AE817EBB82000697056 /* AppKit.framework */; };
 		509D4AEB17EBB82600697056 /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AEA17EBB82600697056 /* IOKit.framework */; };
 		51864E46BD1191DA61536334 /* Chartboost.framework */ = {isa = PBXBuildFile; fileRef = CD204674AEF11CCD45ADF383 /* Chartboost.framework */; };
+		68E8475DBA1C3F4D91228D5C /* SystemConfiguration.framework */ = {isa = PBXBuildFile; fileRef = 425B4597A4442CDF36A72B59 /* SystemConfiguration.framework */; };
 		6FC545F8A683F57F1A68A837 /* libjscocos2d iOS.a */ = {isa = PBXBuildFile; fileRef = D5324188A5C77E96F13F0C73 /* libjscocos2d iOS.a */; };
 		811C41438D4E0D642C3D67DE /* StoreKit.framework */ = {isa = PBXBuildFile; fileRef = 7E334FE2A64A076752CB29A8 /* StoreKit.framework */; };
 		98794A3EB02E811783CC3DAA /* PluginChartboostJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = 36014C9BB4F3A561A35F8E3F /* PluginChartboostJSHelper.cpp */; };
@@ -90,6 +91,7 @@
 		1A96A4F2174A3432008653A9 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../../cocos2d-x-3.6-lib/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		36014C9BB4F3A561A35F8E3F /* PluginChartboostJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginChartboostJSHelper.cpp; path = ../Classes/PluginChartboostJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		41604A0CBED39FA992C08B88 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "../../../../cocos2d-x-3.6-lib/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
+		425B4597A4442CDF36A72B59 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		4D17449887C34C387D772C4C /* SDKBoxJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SDKBoxJSHelper.cpp; path = ../Classes/SDKBoxJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		502380DB17EBB88200990C9B /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		5091731417ECDF7A00D62437 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon-29.png; path = ios/Icon-29.png; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				51864E46BD1191DA61536334 /* Chartboost.framework */,
 				811C41438D4E0D642C3D67DE /* StoreKit.framework */,
 				08D34D188ECCF41DAC7BC4D2 /* AdSupport.framework */,
+				68E8475DBA1C3F4D91228D5C /* SystemConfiguration.framework */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +301,7 @@
 				CD204674AEF11CCD45ADF383 /* Chartboost.framework */,
 				7E334FE2A64A076752CB29A8 /* StoreKit.framework */,
 				18234A89A61425B4181C0C18 /* AdSupport.framework */,
+				425B4597A4442CDF36A72B59 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
